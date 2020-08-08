@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SXC Student Information</title>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <nav class="nav-extended teal">
+        <div class="nav-wrapper">
+            <a href="#!" class="brand-logo white-text">SXC Info</a>
+        </div>
+    </nav>
+
+
+    <div class="row" id="main-container">
+        <form action="https://www.saugatsigdel.com.np" id="registration" autocomplete="off">
+            <fieldset>
+                <legend>Personal Info</legend>
+                <div class="input-field col s12 m4">
+                    <input type="text" name="studentID" id="studentID">
+                    <label for="studentID">Student ID</label>
+                </div>
+                <div class="input-field col s12 m4">
+                    <input type="text" name="fname" id="fname">
+                    <label for="fname">First Name</label>
+                </div>
+                <div class="input-field col s12 m4">
+                    <input type="text" name="mname" id="mname">
+                    <label for="mname">Middle Name</label>
+                </div>
+                <div class="input-field col s12 m4">
+                    <input type="text" name="lname" id="lname">
+                    <label for="lname">Last Name</label>
+                </div>
+                <div class="input-field col s12 m4">
+                    <select name="gender" id="gender">
+                        <option value="" disabled selected>Select Your Gender</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                        <option value="Other">Other</option>
+                    </select>
+                    <label>Gender</label>
+                </div>
+                <div class="input-field col s12 m4">
+                    <input type="text" name="address" id="address">
+                    <label for="address">Address</label>
+                </div>
+                <div class="input-field col s12 m4">
+                    <input type="date" name="dob" id="dob" class="validate" placeholder="DOB">
+                    <label for="dob">Date of Birth</label>
+                </div>
+                <div class="input-field col s12 m4">
+                    <select name='bloodGroup' id="bloodGroup">
+                        <option value="" disabled selected>Choose Blood Group</option>
+                        <option value="Unknown">Unknown</option>
+                        <option value="A+">A+</option>
+                        <option value="O+">O+</option>
+                        <option value="B+">B+</option>
+                        <option value="AB+">AB+</option>
+                        <option value="A-">A-</option>
+                        <option value="O-">O-</option>
+                        <option value="B-">B-</option>
+                        <option value="AB-">AB-</option>
+                    </select>
+                    <label>Blood Group</label>
+                </div>
+
+                <div class="input-field col s12 m4">
+                    <input type="email" name="email" id="email">
+                    <label for="email">Email</label>
+                </div>
+                <div class="input-field col s12 m4">
+                    <input type="text" name="tempStudentEmail" id="tempStudentEmail" placeholder="Student College Email"
+                        readonly>
+                    <label>Student College Email</label>
+                </div>
+                <div class="input-field col s12 m4">
+                    <input type="text" id="nationality" class="autocomplete" name="nationality">
+                    <label for="nationality">Nationality</label>
+                </div>
+                <div class="input-field col s12 m4">
+                    <select name="caste" id="caste">
+                        <option value="" disabled selected>Choose Your Caste</option>
+                        <option value="Indigenous">Indigenous</option>
+                        <option value="Brahmin">Brahmin</option>
+                        <option value="Chhetri">Chhetri</option>
+                        <option value="Dalit">Dalit</option>
+                        <option value="Madhesi">Madhesi</option>
+                        <option value="Other">Other</option>
+                    </select>
+                    <label>Caste</label>
+                </div>
+                <div class="input-field col s12 m4 hidden" id="otherCasteParent">
+                    <input type="text" name="otherCaste" id="otherCaste">
+                    <label for="otherCaste">Other Caste Detail</label>
+                </div>
+            </fieldset>
+            <fieldset>
+                <legend>Permanent Address Details</legend>
+                <div class="input-field col s12 m4">
+                    <input type="text" name="pob" id="pob">
+                    <label for="pob">Place of Birth</label>
+                </div>
+                <div class="input-field col s12 m4">
+                    <input type="number" name="blockNo" id="blockNo" class="copyToTemp">
+                    <label for="blockNo">Block Number</label>
+                </div>
+                <div class="input-field col s12 m4">
+                    <input type="number" name="perWardNo" id="perWardNo" class="copyToTemp">
+                    <label for="perWardNo">Permanent Ward Number</label>
+                </div>
+                <div class="input-field col s12 m4">
+                    <input type="text" name="perMunVDC" id="perMunVDC" class="copyToTemp">
+                    <label for="perMunVDC">Permanent Municapility/VDC</label>
+                </div>
+                <div class="input-field col s12 m4">
+                    <input type="text" name="perDistrict" id="perDistrict" class="districts copyToTemp">
+                    <label for="perDistrict">Permanent District</label>
+                </div>
+                <div class="input-field col s12 m4">
+                    <input type="text" name="perZone" id="perZone" class="zones copyToTemp">
+                    <label for="perZone">Permanent Zone</label>
+                </div>
+                <div class="input-field col s12 m4">
+                    <input type="text" name="perProvince" id="perProvince" class="provinces copyToTemp">
+                    <label for="perProvince">Permanent Province</label>
+                </div>
+                <div class="input-field col s12 m4">
+                    <select name="ruralMunicipality" id="ruralMunicipality">
+                        <option value="" disabled selected>Select Your Option</option>
+                        <option value="Rural">Rural</option>
+                        <option value="Municipality">Municipality</option>
+                        <option value="Metropolitan City">Metropolitan City</option>
+                        <option value="Sub-Metropolitan City">Sub-Metropolitan City</option>
+                    </select>
+                    <label>Rural or Municipality</label>
+                </div>
+                <div class="input-field col s12 m4">
+                    <input type="text" name="phoneOrCell" id="phoneOrCell" class="copyToTemp">
+                    <label for="phoneOrCell">Phone or Cell</label>
+                </div>
+            </fieldset>
+            <div class="switch">
+                <label>
+                    <input type="checkbox" id="tempSameAsPer">
+                    <span class="lever"></span>
+                    Temporary Address Same As Permanent
+                </label>
+            </div>
+            <fieldset>
+                <legend>Temporary Address Details</legend>
+                <div class="input-field col s12 m4">
+                    <input type="number" name="tempBlockNo" id="tempBlockNo" class="temporaries">
+                    <label for="tempBlockNo">Temporary Block Number</label>
+                </div>
+                <div class="input-field col s12 m4">
+                    <input type="number" name="tempWardNo" id="tempWardNo" class="temporaries">
+                    <label for="tempWardNo">Temporary Ward Number</label>
+                </div>
+                <div class="input-field col s12 m4">
+                    <input type="text" name="tempMunVDC" id="tempMunVDC" class="temporaries">
+                    <label for="tempMunVDC">Temporary Municapility/VDC</label>
+                </div>
+                <div class="input-field col s12 m4">
+                    <input type="text" name="tempDistrict" id="tempDistrict" class="districts temporaries">
+                    <label for="tempDistrict">Temporary District</label>
+                </div>
+                <div class="input-field col s12 m4">
+                    <input type="text" name="tempZone" id="tempZone" class="zones temporaries">
+                    <label for="tempZone">Temporary Zone</label>
+                </div>
+                <div class="input-field col s12 m4">
+                    <input type="text" name="tempProvince" id="tempProvince" class="provinces temporaries">
+                    <label for="tempProvince">Temporary Province</label>
+                </div>
+                <div class="input-field col s12 m4">
+                    <input type="number" name="tempPhoneCell" id="tempPhoneCell" class="temporaries">
+                    <label for="tempPhoneCell">Temporary Phone/Cell</label>
+                </div>
+                <div class="input-field col s12 m4">
+                    <input type="text" name="tempAddress" id="tempAddress">
+                    <label for="tempAddress">Temporary Address</label>
+                </div>
+            </fieldset>
+            <fieldset>
+                <legend>Parent Details</legend>
+                <div class="input-field col s12 m4">
+                    <input type="text" name="fathername" id="fathername">
+                    <label for="fathername">Father Name</label>
+                </div>
+                <div class="input-field col s12 m4">
+                    <input type="text" name="mothername" id="mothername">
+                    <label for="mothername">Mother Name</label>
+                </div>
+                <div class="input-field col s12 m4">
+                    <input type="number" name="fathercontact" id="fathercontact">
+                    <label for="fathercontact">Father Contact Number</label>
+                </div>
+                <div class="input-field col s12 m4">
+                    <input type="number" name="mothercontact" id="mothercontact">
+                    <label for="mothercontact">Mother Contact Number</label>
+                </div>
+                <div class="input-field col s12 m4">
+                    <input type="text" name="fatherProfession" id="fatherProfession">
+                    <label for="fatherProfession">Father Profession</label>
+                </div>
+                <div class="input-field col s12 m4">
+                    <input type="text" name="motherProfession" id="motherProfession">
+                    <label for="motherProfession">Mother Profession</label>
+                </div>
+            </fieldset>
+            <fieldset>
+                <legend>Local Guardian Details</legend>
+                <div class="input-field col s12 m4">
+                    <input type="text" name="guardianName" id="guardianName">
+                    <label for="guardianName">Guardian Name</label>
+                </div>
+                <div class="input-field col s12 m4">
+                    <input type="number" name="guardianContactNo" id="guardianContactNo">
+                    <label for="guardianContactNo">Guardian Contact Number</label>
+                </div>
+                <div class="input-field col s12 m4">
+                    <input type="text" name="guardianPhoneNo" id="guardianPhoneNo">
+                    <label for="guardianPhoneNo">Guardian Phone Number</label>
+                </div>
+                <div class="input-field col s12 m4">
+                    <input type="text" name="guardianProfession" id="guardianProfession">
+                    <label for="guardianProfession">Guardian Profession</label>
+                </div>
+            </fieldset>
+            <fieldset>
+                <legend>Academic Details</legend>
+                <div class="input-field col s12 m4">
+                    <select name="program" id="program">
+                        <option value="" disabled selected>Choose your program</option>
+                        <option value="Bsc. CSIT">Bsc. CSIT</option>
+                        <option value="BIM">BIM</option>
+                        <option value="BIM">A Level</option>
+                        <option value="BIM">Plus Two</option>
+                        <option value="BIM">BSW</option>
+                        <option value="BIM">BSc. Physics</option>
+                        <option value="BIM">MSc. Physics</option>
+                        <option value="BIM">BSc. Microbiology</option>
+                        <option value="BIM">MSc. Microbiology</option>
+                        <option value="BIM">BA</option>
+                        <option value="BIM">BBS</option>
+                        <option value="BIM">MBS</option>
+                    </select>
+                    <label>Program</label>
+                </div>
+                <div class="input-field col s12 m4">
+                    <select name="yearEnrolled" id="yearEnrolled">
+                        <option value="" disabled selected>Choose Year Enrolled</option>
+                    </select>
+                    <label>Year Enrolled</label>
+                </div>
+                <div class="input-field col s12 m4">
+                    <select name="currentyear" id="currentYear">
+                        <option value="" disabled selected>Choose Your Current Year</option>
+                        <option value="First Year">First Year</option>
+                        <option value="Second Year">Second Year</option>
+                        <option value="Third Year">Third Year</option>
+                        <option value="Fourth Year">Foruth Year</option>
+                        <option value="Fourth Year">Passed Out</option>
+                    </select>
+                    <label>Current Year</label>
+                </div>
+                <div class="input-field col s12 m4">
+                    <select name="currentSemester" id="currentSemester">
+                        <option value="" disabled selected>Choose Your Current Semester</option>
+                        <option value="First Semester">Passed Out</option>
+                        <option value="First Semester">Not Available</option>
+                        <option value="First Semester">First Semester</option>
+                        <option value="Second Semester">Second Semester</option>
+                        <option value="Third Semester">Third Semester</option>
+                        <option value="Fourth Semester">Foruth Semester</option>
+                        <option value="Fifth Semester">Fifth Semester</option>
+                        <option value="Sixth Semester">Sixth Semester</option>
+                        <option value="Seventh Semester">Seventh Semester</option>
+                    </select>
+                    <label>Current Semester</label>
+                </div>
+                <div class="input-field col s12 m4">
+                    <select name="level" id="level">
+                        <option value="" disabled selected>Choose Your Level</option>
+                        <option value="Intermediate">Intermediate</option>
+                        <option value="Bachelor">Bachelor</option>
+                        <option value="Masters">Masters</option>
+                    </select>
+                    <label>Level</label>
+                </div>
+                <div class="input-field col s12 m4">
+                    <select name="faculty" id="faculty">
+                        <option value="" disabled selected>Choose Your Faculty</option>
+                        <option value="Science">Science</option>
+                        <option value="Management">Management</option>
+                        <option value="Humanities">Humanities</option>
+                    </select>
+                    <label>Faculty</label>
+                </div>
+                <div class="input-field col s12 m4">
+                    <select name="section" id="section">
+                        <option value="" disabled selected>Choose Your Section</option>
+                        <option value="A">A</option>
+                        <option value="B">B</option>
+                    </select>
+                    <label>Section</label>
+                </div>
+            </fieldset>
+    </div>
+    <div class="row">
+        <div class="col s12 m4 offset-m4">
+            <button class="btn waves-effect waves-light" type="submit" name="action">Submit</button>
+        </div>
+        </form>
+    </div>
+
+    <!-- Modal Structure -->
+    <div id="modal" class="modal">
+        <div class="modal-content" id="errorMessage">
+            <h4>Datat Input Error</h4>
+            <p>A bunch of text</p>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+        </div>
+    </div>
+
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
