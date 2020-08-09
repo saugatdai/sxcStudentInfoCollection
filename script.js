@@ -390,7 +390,6 @@ function copyPerToTemp() {
     if (document.querySelector('#tempSameAsPer').checked) {
         // disable all temporary inputs inputs
         temporaries.forEach(temporary => {
-            temporary.focus();
             temporary.setAttribute('disabled', 'true');
         });
         // copy from permanent to temporary
@@ -401,6 +400,7 @@ function copyPerToTemp() {
         document.querySelector('#tempZone').value = document.querySelector('#perZone').value;
         document.querySelector('#tempProvince').value = document.querySelector('#perProvince').value;
         document.querySelector('#tempPhoneCell').value = document.querySelector('#phoneOrCell').value;
+        document.querySelector('#tempAddress').focus();
     } else {
         // Undo the disabling
         temporaries.forEach(temporary => {
@@ -416,8 +416,7 @@ function copyPerToTemp() {
 function initializeYearSelectionOption() {
     const currentYear = new Date().getFullYear();
     const ddElement = M.FormSelect.getInstance(document.querySelector('#yearEnrolled'));
-    console.log(ddElement.$el[0]);
-    for (let i = 1988; i <= currentYear; i++) {
+    for (let i = currentYear; i >= 1988; i--) {
         let yearOption = document.createElement('option');
         yearOption.setAttribute('value', i);
         let yearText = document.createTextNode(i);
@@ -428,9 +427,39 @@ function initializeYearSelectionOption() {
     M.FormSelect.init(document.querySelector('#yearEnrolled'));
 }
 
+function handleProgramChange() {
+    const facultyElement = M.FormSelect.getInstance(document.querySelector('#faculty'));
+    if (this.value === 'A Level') {
+        let option1 = document.createElement('option');
+        let option2 = document.createElement('option');
+        option1.setAttribute('value', 'Cambridge Science');
+        option2.setAttribute('value', 'Cambridge Non-Science');
+        option1.appendChild(document.createTextNode('Cambridge Science'));
+        option2.appendChild(document.createTextNode('Cambridge Non-Science'));
+        facultyElement.$el[0].appendChild(option1);
+        facultyElement.$el[0].appendChild(option2);
+        // reinitialize
+        M.FormSelect.init(document.querySelector('#faculty'));
+    } else {
+        // TODO Remove a level components
+        const elementsToRemove = []
+        facultyElement.$el[0].childNodes.forEach(node => {
+            if (node.value && (node.value === 'Cambridge Science' || node.value === 'Cambridge Non-Science')) {
+                elementsToRemove.push(node);
+            }
+        });
+        elementsToRemove.forEach(node => {
+            facultyElement.$el[0].removeChild(node);
+        });
+        // reinitialize
+        M.FormSelect.init(document.querySelector('#faculty'));
+    }
+}
+
 function initializeOtherComponents() {
     document.querySelector('#registration').addEventListener('submit', handleFormSubmit);
     document.querySelector('#caste').addEventListener('change', handleCasteChange);
+    document.querySelector('#program').addEventListener('change', handleProgramChange);
     document.querySelector('#studentID').addEventListener('keyup', handleCollegeEmail);
     document.querySelector('#tempSameAsPer').addEventListener('click', copyPerToTemp);
     initializeYearSelectionOption();
