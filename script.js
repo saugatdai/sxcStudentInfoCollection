@@ -360,11 +360,11 @@ function trimTextInputs() {
     document.querySelector('#otherCaste').value = document.querySelector('#otherCaste').value.trim();
 }
 
-
 function handleFormSubmit(e) {
     e.preventDefault();
     trimTextInputs();
     if (validateTextInputs()) {
+        // submit the form at here after omitting codes below
         M.toast({ html: 'Congratulations!! Form Submitted', classes: 'teal' });
     }
 
